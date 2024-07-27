@@ -1,9 +1,11 @@
-
+// middleware.ts
 import { authMiddleware } from "@clerk/nextjs";
 
-// See https://clerk.com/docs/nextjs/middleware for more information about configuring your middleware
 export default authMiddleware();
 
 export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: [
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/(api|trpc)(.*)',
+  ],
 };

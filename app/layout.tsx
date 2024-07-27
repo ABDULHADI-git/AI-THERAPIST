@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   description: 'An AI-powered therapist chatbot.',
 };
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ClerkProvider>
       <html lang="en">
