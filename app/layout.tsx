@@ -1,52 +1,19 @@
-import { ClerkProvider } from '@clerk/nextjs'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Navbar from '@/components/navbar'
-import { ThemeProvider } from '@/components/theme-provider'
-import { Toaster } from '@/components/ui/toaster'
-import { cn } from '@/lib/utils'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+// app/layout.tsx
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Navbar from '@/components/navbar';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
+import { cn } from '@/lib/utils';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'AI Therapist',
-  description: 'An AI Therapist to help you with your mental health',
-}
+  description: 'An AI-powered therapist chatbot.',
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <ClerkProvider>
-      <html lang='en'>
-        <body className={cn('bg-secondary', inter.className)}>
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            <Navbar />
-            <main>{children}</main>
-            <Toaster />
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
-  )
-}
-
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
-import './globals.css'
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
@@ -61,5 +28,5 @@ export default function RootLayout({
         </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }
